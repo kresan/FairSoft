@@ -59,12 +59,14 @@ class Root(CMakePackage):
     patch('root7-webgui.patch', level=1, when='@6.16.00')
 
     # Pass X11 include directories to build system when building builtin glew
-    patch('builtin_glew.patch', level=0)
-    patch('builtin_ftgl.patch', level=0)
-    patch('graf3d_gl.patch', level=0)
+    patch('builtin_glew.patch', level=0, when='@:6.16.00')
+    patch('builtin_ftgl.patch', level=0, when='@:6.16.00')
+    patch('graf3d_gl.patch', level=0, when='@:6.16.00')
     patch('graf2d.patch', level=0)
     patch('external_zlib.patch', level=0, when='@6.12.06')
     patch('root6_16_xrootd.patch', level=0, when='@6.16.00')
+
+    patch('opengl_glu_6.18.patch', level=0, when='@6.18.04')
 
     if sys.platform == 'darwin':
         # Resolve non-standard use of uint, _cf_

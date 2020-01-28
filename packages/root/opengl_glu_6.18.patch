@@ -1,0 +1,16 @@
+--- cmake/modules/SearchInstalledSoftware.cmake	2020-03-10 11:11:32.154852527 +0100
++++ cmake/modules/SearchInstalledSoftware.cmake_new	2020-03-10 11:17:52.285670611 +0100
+@@ -459,6 +459,13 @@
+       set(opengl OFF CACHE BOOL "Disabled because OpenGL (with GLU) not found (${opengl_description})" FORCE)
+     endif()
+   endif()
++  if(OPENGL_GLU_FOUND)
++    get_filename_component(OPENGLU_INCLUDE_DIR ${OPENGL_glu_LIBRARY} DIRECTORY)
++    set(OPENGLU_INCLUDE_DIR ${OPENGLU_INCLUDE_DIR}/../include)
++    Message(STATUS "OPENGLU_INCLUDE_DIR:   " ${OPENGLU_INCLUDE_DIR})
++    set_target_properties(OpenGL::GLU PROPERTIES INTERFACE_INCLUDE_DIRECTORIES
++                          "${OPENGLU_INCLUDE_DIR}")
++  endif()
+ endif()
+ 
+ #---Check for GLEW -------------------------------------------------------------------
