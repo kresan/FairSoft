@@ -329,7 +329,7 @@ class Root(CMakePackage):
             '-Dbuiltin_vc:BOOL=OFF',
             '-Dbuiltin_vdt:BOOL=OFF',
             '-Dbuiltin_veccore:BOOL=OFF',
-            '-Dbuiltin_xrootd:BOOL=ON',
+            '-Dbuiltin_xrootd:BOOL=OFF',
             '-Dbuiltin_zlib:BOOL=OFF'
         ]
 
