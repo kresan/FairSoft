@@ -419,6 +419,8 @@ class Openmpi(AutotoolsPackage):
             # for Open-MPI 2.0:, C++ bindings are disabled by default.
             config_args.extend(['--enable-mpi-cxx'])
 
+        config_args.extend(['--disable-pmix-dstore'])
+
         if spec.satisfies('@3.0.0:', strict=True):
             config_args.append('--with-zlib={0}'.format(spec['zlib'].prefix))
 
