@@ -268,6 +268,7 @@ class Openmpi(AutotoolsPackage):
     depends_on('sqlite', when='+sqlite3@:1.11')
     depends_on('zlib', when='@3.0.0:')
     depends_on('valgrind~mpi', when='+memchecker')
+    depends_on('rdma-core', when='fabrics=verbs')
     depends_on('ucx', when='fabrics=ucx')
     depends_on('libfabric', when='fabrics=libfabric')
     depends_on('slurm', when='schedulers=slurm')
@@ -346,8 +347,9 @@ class Openmpi(AutotoolsPackage):
             return '--without-{0}'.format(opt)
         line = '--with-{0}'.format(opt)
         path = _verbs_dir()
-        if (path is not None) and (path not in ('/usr', '/usr/local')):
-            line += '={0}'.format(path)
+        #if (path is not None) and (path not in ('/usr', '/usr/local')):
+        #    line += '={0}'.format(path)
+        line += '=/usr'
         return line
 
     def with_or_without_mxm(self, activated):
@@ -433,6 +435,7 @@ class Openmpi(AutotoolsPackage):
         # Fabrics
         if 'fabrics=auto' not in spec:
             config_args.extend(self.with_or_without('fabrics'))
+        config_args.append('--with-verbs-libdir=/usr/lib')
         # Schedulers
         if 'schedulers=auto' not in spec:
             config_args.extend(self.with_or_without('schedulers'))
