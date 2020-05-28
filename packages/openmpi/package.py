@@ -273,6 +273,7 @@ class Openmpi(AutotoolsPackage):
     depends_on('libfabric', when='fabrics=libfabric')
     depends_on('slurm', when='schedulers=slurm')
     depends_on('pmix', when='+pmi')
+    depends_on('libevent', when='+pmi')
     depends_on('lsf', when='schedulers=lsf')
     depends_on('binutils+libiberty', when='fabrics=mxm')
 
@@ -411,6 +412,8 @@ class Openmpi(AutotoolsPackage):
         # Presumably future versions after 11/2018 should support slurm+static
         if spec.satisfies('schedulers=slurm'):
             config_args.append('--with-pmix={0}'.format(spec['pmix'].prefix))
+            # libevent support
+            config_args.append('--with-libevent={0}'.format(spec['libevent'].prefix))
             if spec.satisfies('@3.1.3:') or spec.satisfies('@3.0.3'):
                 config_args.append('--enable-static')
         else:
