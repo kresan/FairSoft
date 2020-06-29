@@ -38,7 +38,7 @@ class IntelGraphicsCompiler(CMakePackage):
 
     # FIXME: Add dependencies if required.
     depends_on('cmake', type='build')
-    depends_on('llvm')
+    depends_on('llvm@7.0.0', when='@1.0.4155')
 
     def cmake_args(self):
         # FIXME: Add arguments other than
