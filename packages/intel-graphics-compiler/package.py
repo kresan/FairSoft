@@ -11,11 +11,11 @@
 # next to all the things you'll want to change. Once you've handled
 # them, you can save this file and test your package like this:
 #
-#     spack install intel-compute-runtime
+#     spack install intel-graphics-compiler
 #
 # You can edit this file again by typing:
 #
-#     spack edit intel-compute-runtime
+#     spack edit intel-graphics-compiler
 #
 # See the Spack documentation for more information on packaging.
 # ----------------------------------------------------------------------------
@@ -23,24 +23,25 @@
 from spack import *
 
 
-class IntelComputeRuntime(CMakePackage):
+class IntelGraphicsCompiler(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
-    homepage = "https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html"
-    url      = "https://github.com/intel/compute-runtime/archive/20.24.17065.tar.gz"
+    # FIXME: Add a proper url for your package's homepage here.
+    homepage = "https://www.example.com"
+    url      = "https://github.com/intel/intel-graphics-compiler/archive/igc-1.0.4155.tar.gz"
 
     # FIXME: Add a list of GitHub accounts to
     # notify when the package is updated.
     # maintainers = ['github_user1', 'github_user2']
 
-    version('20.24.17065', sha256='49e30c184299a8f65023d4e189ca84a3d24c1a41a95bb9159b0898d916fbc9be')
+    version('1.0.4155', sha256='d5ac4dce02c36be1d15dfc253224bfc47eaf7538b5563a492fd3e4658649f78e')
 
     # FIXME: Add dependencies if required.
     depends_on('cmake', type='build')
-    depends_on('intel-graphics-compiler')
 
     def cmake_args(self):
-        spec = self.spec
-        options = []
-        return options
-
+        # FIXME: Add arguments other than
+        # FIXME: CMAKE_INSTALL_PREFIX and CMAKE_BUILD_TYPE
+        # FIXME: If not needed delete this function
+        args = []
+        return args
