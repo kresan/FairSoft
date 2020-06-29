@@ -1,6 +1,6 @@
 spack:
   specs:
-    - perl-datemanip
+    - perl@5.16.3
     - munge@0.5.13 localstatedir=/var
     - pmix@2.2.2
     - slurm@18-08-9-1 +pmix sysconfdir=/etc/slurm
