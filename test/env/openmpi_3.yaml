@@ -8,5 +8,9 @@ spack:
     - scalasca
     - hdf5
     - mpfr@3.1.6
+    - amd.blis
+    - amd.libflame
+    - amd.fftw
+    - amd-scalapack
   concretization: together
   view: false
