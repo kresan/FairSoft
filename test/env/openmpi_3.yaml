@@ -12,5 +12,6 @@ spack:
     - amd.libflame
     - amd.fftw
     - amd-scalapack
+    - netlib-lapack
   concretization: together
   view: false
